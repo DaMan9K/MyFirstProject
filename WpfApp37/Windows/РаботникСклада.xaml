@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp37.Windows.РаботникСклада"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp37.Windows"
+        mc:Ignorable="d"
+        Title="РаботникСклада" Height="450" Width="800" Closed="Window_Closed">
+    <Grid Margin="0,0,0,-1">
+        <DataGrid x:Name="DGWHW" Margin="0,0,2,65" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Width="0.2*" Header="Шкаф на складе" Binding="{Binding IdShelingWH}"/>
+                <DataGridTextColumn  Width="0.2*" Header="Колличество книг" Binding="{Binding Quantity}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtUpdata" Content="Проверка холла" Margin="589,381,78,10" Click="BtUpdata_Click"/>
+    </Grid>
+</Window>

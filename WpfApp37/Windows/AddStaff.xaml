@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfApp37.Windows.AddStaff"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp37.Windows"
+        mc:Ignorable="d"
+        Title="AddStaff" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="TBFirstName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="149,129,0,0"/>
+        <TextBox x:Name="TBLogin" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="445,129,0,0"/>
+        <TextBox x:Name="TBSecondName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="294,129,0,0"/>
+        <TextBox x:Name="TBLastName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="10,129,0,0"/>
+        <ComboBox x:Name="CBPost" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="400,261,0,0" SelectedIndex="0"/>
+        <Button x:Name="BTAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="632,285,0,0" Click="BTAdd_Click"/>
+        <TextBox x:Name="TBPassword" HorizontalAlignment="Left" Height="23" Margin="591,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="73,91,0,0" VerticalAlignment="Top"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="219,91,0,0" VerticalAlignment="Top"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="360,102,0,0" VerticalAlignment="Top"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="501,102,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="632,102,0,0" VerticalAlignment="Top"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="426,235,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,57 @@
+﻿<Window x:Class="WpfApp37.Windows.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp37.Windows"
+        mc:Ignorable="d"
+        Title="Консультант" Height="450" Width="800" Closed="Window_Closed">
+    <Grid>
+        <TabControl>
+            <TabItem x:Name="TISheling" Header="Стеллажи">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="DGShelingHall" AutoGenerateColumns="False" SelectedCellsChanged="DGShelingHall_SelectedCellsChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Width="0.2*" Header="Шкаф в зале" Binding="{Binding IdSelvingHall}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Тема книг" Binding="{Binding Thema}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="bt2" Content="Изменить" HorizontalAlignment="Left" Margin="652,347,0,0" VerticalAlignment="Top" Width="75" Click="bt2_Click" RenderTransformOrigin="0.137,0.92"/>
+                    <ComboBox x:Name="CBTheme" HorizontalAlignment="Left" Margin="607,290,0,0" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="TIShell" Header="Полки">
+                <DataGrid x:Name="DGShulf" Margin="0,0,-2,1" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Width="0.2*" Header="Полка" Binding="{Binding IdShelf}"/>
+                        <DataGridTextColumn  Width="0.2*" Header="Шкаф в зале" Binding="{Binding IdShelvingUH}"/>
+                        <DataGridTextColumn  Width="0.2*" Header="Шкаф на складе" Binding="{Binding IdShelvingWH}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem x:Name="TIBook" Header="Книги">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="DGBook" AutoGenerateColumns="False" Margin="-10,0,10,0" SelectedCellsChanged="DGBook_SelectedCellsChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Width="0.2*" Header="Id Книги" Binding="{Binding IdBook}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Название" Binding="{Binding NameBook}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Автор" Binding="{Binding Author.Lastame}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Полка" Binding="{Binding NumberShelf}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Жанр" Binding="{Binding Genre}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Статус" Binding="{Binding Status}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="bt1" Content="Изменить" HorizontalAlignment="Left" Margin="549,348,0,0" VerticalAlignment="Top" Width="75" Click="bt1_Click" RenderTransformOrigin="0.137,0.92"/>
+                    <ComboBox x:Name="CBShell" HorizontalAlignment="Left" Margin="447,290,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="CBGener" HorizontalAlignment="Left" Margin="607,290,0,0" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

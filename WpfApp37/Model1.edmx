@@ -1,0 +1,755 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище BookShopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="IdAuthor" />
+          </Key>
+          <Property Name="IdAuthor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastame" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="IdBook" />
+          </Key>
+          <Property Name="IdBook" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameBook" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameAuth" Type="int" Nullable="false" />
+          <Property Name="NumberShelf" Type="int" Nullable="false" />
+          <Property Name="YearBook" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Genre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="QuantityWH" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gener">
+          <Key>
+            <PropertyRef Name="Gener" />
+          </Key>
+          <Property Name="Gener" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Magazine">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBook" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Provider" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostName" />
+          </Key>
+          <Property Name="PostName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="NameCompany" />
+          </Key>
+          <Property Name="NameCompany" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateStart" Type="datetime" Nullable="false" />
+          <Property Name="DateEnd" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ShelingUnitHall">
+          <Key>
+            <PropertyRef Name="IdSelvingHall" />
+          </Key>
+          <Property Name="IdSelvingHall" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Thema" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdConsultant" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShelingWarehouse">
+          <Key>
+            <PropertyRef Name="IdShelingWH" />
+          </Key>
+          <Property Name="IdShelingWH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdWHWorker" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shulf">
+          <Key>
+            <PropertyRef Name="IdShelf" />
+          </Key>
+          <Property Name="IdShelf" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdShelvingUH" Type="int" />
+          <Property Name="IdShelvingWH" Type="int" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="IdStaff" />
+          </Key>
+          <Property Name="IdStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Post" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusName" />
+          </Key>
+          <Property Name="StatusName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ThemeName">
+          <Key>
+            <PropertyRef Name="NameTheme" />
+          </Key>
+          <Property Name="NameTheme" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Books_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="IdAuthor" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="NameAuth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Gener">
+          <End Role="Gener" Type="Self.Gener" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gener">
+              <PropertyRef Name="Gener" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_shulf">
+          <End Role="shulf" Type="Self.shulf" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shulf">
+              <PropertyRef Name="IdShelf" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="NumberShelf" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusName" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magazine_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Magazine" Type="Self.Magazine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="IdBook" />
+            </Principal>
+            <Dependent Role="Magazine">
+              <PropertyRef Name="IdBook" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magazine_Provider">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+          <End Role="Magazine" Type="Self.Magazine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="NameCompany" />
+            </Principal>
+            <Dependent Role="Magazine">
+              <PropertyRef Name="Provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShelingUnitHall_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="ShelingUnitHall" Type="Self.ShelingUnitHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="ShelingUnitHall">
+              <PropertyRef Name="IdConsultant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShelingUnitHall_ThemeName">
+          <End Role="ThemeName" Type="Self.ThemeName" Multiplicity="1" />
+          <End Role="ShelingUnitHall" Type="Self.ShelingUnitHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThemeName">
+              <PropertyRef Name="NameTheme" />
+            </Principal>
+            <Dependent Role="ShelingUnitHall">
+              <PropertyRef Name="Thema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shulf_ShelingUnitHall">
+          <End Role="ShelingUnitHall" Type="Self.ShelingUnitHall" Multiplicity="0..1" />
+          <End Role="shulf" Type="Self.shulf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelingUnitHall">
+              <PropertyRef Name="IdSelvingHall" />
+            </Principal>
+            <Dependent Role="shulf">
+              <PropertyRef Name="IdShelvingUH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shulf_ShelingWarehouse">
+          <End Role="ShelingWarehouse" Type="Self.ShelingWarehouse" Multiplicity="0..1" />
+          <End Role="shulf" Type="Self.shulf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelingWarehouse">
+              <PropertyRef Name="IdShelingWH" />
+            </Principal>
+            <Dependent Role="shulf">
+              <PropertyRef Name="IdShelvingWH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostName" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BookShopModelContainer">
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gener" EntityType="Self.Gener" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Magazine" EntityType="Self.Magazine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShelingUnitHall" EntityType="Self.ShelingUnitHall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShelingWarehouse" EntityType="Self.ShelingWarehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shulf" EntityType="Self.shulf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThemeName" EntityType="Self.ThemeName" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Books_Author" Association="Self.FK_Books_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Gener" Association="Self.FK_Books_Gener">
+            <End Role="Gener" EntitySet="Gener" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_shulf" Association="Self.FK_Books_shulf">
+            <End Role="shulf" EntitySet="shulf" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Status" Association="Self.FK_Books_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magazine_Books" Association="Self.FK_Magazine_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Magazine" EntitySet="Magazine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magazine_Provider" Association="Self.FK_Magazine_Provider">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Magazine" EntitySet="Magazine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShelingUnitHall_Staff" Association="Self.FK_ShelingUnitHall_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="ShelingUnitHall" EntitySet="ShelingUnitHall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShelingUnitHall_ThemeName" Association="Self.FK_ShelingUnitHall_ThemeName">
+            <End Role="ThemeName" EntitySet="ThemeName" />
+            <End Role="ShelingUnitHall" EntitySet="ShelingUnitHall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shulf_ShelingUnitHall" Association="Self.FK_shulf_ShelingUnitHall">
+            <End Role="ShelingUnitHall" EntitySet="ShelingUnitHall" />
+            <End Role="shulf" EntitySet="shulf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shulf_ShelingWarehouse" Association="Self.FK_shulf_ShelingWarehouse">
+            <End Role="ShelingWarehouse" EntitySet="ShelingWarehouse" />
+            <End Role="shulf" EntitySet="shulf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Post" Association="Self.FK_Staff_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="IdAuthor" />
+          </Key>
+          <Property Name="IdAuthor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastame" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Books_Author" FromRole="Author" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="IdBook" />
+          </Key>
+          <Property Name="IdBook" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameBook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameAuth" Type="Int32" Nullable="false" />
+          <Property Name="NumberShelf" Type="Int32" Nullable="false" />
+          <Property Name="YearBook" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Genre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="QuantityWH" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_Books_Author" FromRole="Books" ToRole="Author" />
+          <NavigationProperty Name="Gener" Relationship="Self.FK_Books_Gener" FromRole="Books" ToRole="Gener" />
+          <NavigationProperty Name="shulf" Relationship="Self.FK_Books_shulf" FromRole="Books" ToRole="shulf" />
+          <NavigationProperty Name="Status1" Relationship="Self.FK_Books_Status" FromRole="Books" ToRole="Status" />
+          <NavigationProperty Name="Magazine" Relationship="Self.FK_Magazine_Books" FromRole="Books" ToRole="Magazine" />
+        </EntityType>
+        <EntityType Name="Gener">
+          <Key>
+            <PropertyRef Name="Gener1" />
+          </Key>
+          <Property Name="Gener1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Books_Gener" FromRole="Gener" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Magazine">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBook" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Magazine_Books" FromRole="Magazine" ToRole="Books" />
+          <NavigationProperty Name="Provider1" Relationship="Self.FK_Magazine_Provider" FromRole="Magazine" ToRole="Provider" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostName" />
+          </Key>
+          <Property Name="PostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Post" FromRole="Post" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Provider">
+          <Key>
+            <PropertyRef Name="NameCompany" />
+          </Key>
+          <Property Name="NameCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Magazine" Relationship="Self.FK_Magazine_Provider" FromRole="Provider" ToRole="Magazine" />
+        </EntityType>
+        <EntityType Name="ShelingUnitHall">
+          <Key>
+            <PropertyRef Name="IdSelvingHall" />
+          </Key>
+          <Property Name="IdSelvingHall" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Thema" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdConsultant" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_ShelingUnitHall_Staff" FromRole="ShelingUnitHall" ToRole="Staff" />
+          <NavigationProperty Name="ThemeName" Relationship="Self.FK_ShelingUnitHall_ThemeName" FromRole="ShelingUnitHall" ToRole="ThemeName" />
+          <NavigationProperty Name="shulf" Relationship="Self.FK_shulf_ShelingUnitHall" FromRole="ShelingUnitHall" ToRole="shulf" />
+        </EntityType>
+        <EntityType Name="ShelingWarehouse">
+          <Key>
+            <PropertyRef Name="IdShelingWH" />
+          </Key>
+          <Property Name="IdShelingWH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdWHWorker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="shulf" Relationship="Self.FK_shulf_ShelingWarehouse" FromRole="ShelingWarehouse" ToRole="shulf" />
+        </EntityType>
+        <EntityType Name="shulf">
+          <Key>
+            <PropertyRef Name="IdShelf" />
+          </Key>
+          <Property Name="IdShelf" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdShelvingUH" Type="Int32" />
+          <Property Name="IdShelvingWH" Type="Int32" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Books_shulf" FromRole="shulf" ToRole="Books" />
+          <NavigationProperty Name="ShelingUnitHall" Relationship="Self.FK_shulf_ShelingUnitHall" FromRole="shulf" ToRole="ShelingUnitHall" />
+          <NavigationProperty Name="ShelingWarehouse" Relationship="Self.FK_shulf_ShelingWarehouse" FromRole="shulf" ToRole="ShelingWarehouse" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="IdStaff" />
+          </Key>
+          <Property Name="IdStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Post1" Relationship="Self.FK_Staff_Post" FromRole="Staff" ToRole="Post" />
+          <NavigationProperty Name="ShelingUnitHall" Relationship="Self.FK_ShelingUnitHall_Staff" FromRole="Staff" ToRole="ShelingUnitHall" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusName" />
+          </Key>
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Books_Status" FromRole="Status" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="ThemeName">
+          <Key>
+            <PropertyRef Name="NameTheme" />
+          </Key>
+          <Property Name="NameTheme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ShelingUnitHall" Relationship="Self.FK_ShelingUnitHall_ThemeName" FromRole="ThemeName" ToRole="ShelingUnitHall" />
+        </EntityType>
+        <Association Name="FK_Books_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="IdAuthor" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="NameAuth" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Gener">
+          <End Role="Gener" Type="Self.Gener" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gener">
+              <PropertyRef Name="Gener1" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_shulf">
+          <End Role="shulf" Type="Self.shulf" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shulf">
+              <PropertyRef Name="IdShelf" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="NumberShelf" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Books" Type="Self.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusName" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magazine_Books">
+          <End Role="Books" Type="Self.Books" Multiplicity="1" />
+          <End Role="Magazine" Type="Self.Magazine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="IdBook" />
+            </Principal>
+            <Dependent Role="Magazine">
+              <PropertyRef Name="IdBook" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Magazine_Provider">
+          <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+          <End Role="Magazine" Type="Self.Magazine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provider">
+              <PropertyRef Name="NameCompany" />
+            </Principal>
+            <Dependent Role="Magazine">
+              <PropertyRef Name="Provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostName" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShelingUnitHall_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="ShelingUnitHall" Type="Self.ShelingUnitHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="IdStaff" />
+            </Principal>
+            <Dependent Role="ShelingUnitHall">
+              <PropertyRef Name="IdConsultant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShelingUnitHall_ThemeName">
+          <End Role="ThemeName" Type="Self.ThemeName" Multiplicity="1" />
+          <End Role="ShelingUnitHall" Type="Self.ShelingUnitHall" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThemeName">
+              <PropertyRef Name="NameTheme" />
+            </Principal>
+            <Dependent Role="ShelingUnitHall">
+              <PropertyRef Name="Thema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shulf_ShelingUnitHall">
+          <End Role="ShelingUnitHall" Type="Self.ShelingUnitHall" Multiplicity="0..1" />
+          <End Role="shulf" Type="Self.shulf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelingUnitHall">
+              <PropertyRef Name="IdSelvingHall" />
+            </Principal>
+            <Dependent Role="shulf">
+              <PropertyRef Name="IdShelvingUH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shulf_ShelingWarehouse">
+          <End Role="ShelingWarehouse" Type="Self.ShelingWarehouse" Multiplicity="0..1" />
+          <End Role="shulf" Type="Self.shulf" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShelingWarehouse">
+              <PropertyRef Name="IdShelingWH" />
+            </Principal>
+            <Dependent Role="shulf">
+              <PropertyRef Name="IdShelvingWH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Author" EntityType="Self.Author" />
+          <EntitySet Name="Books" EntityType="Self.Books" />
+          <EntitySet Name="Gener" EntityType="Self.Gener" />
+          <EntitySet Name="Magazine" EntityType="Self.Magazine" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Provider" EntityType="Self.Provider" />
+          <EntitySet Name="ShelingUnitHall" EntityType="Self.ShelingUnitHall" />
+          <EntitySet Name="ShelingWarehouse" EntityType="Self.ShelingWarehouse" />
+          <EntitySet Name="shulf" EntityType="Self.shulf" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="ThemeName" EntityType="Self.ThemeName" />
+          <AssociationSet Name="FK_Books_Author" Association="Self.FK_Books_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Gener" Association="Self.FK_Books_Gener">
+            <End Role="Gener" EntitySet="Gener" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_shulf" Association="Self.FK_Books_shulf">
+            <End Role="shulf" EntitySet="shulf" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Status" Association="Self.FK_Books_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magazine_Books" Association="Self.FK_Magazine_Books">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Magazine" EntitySet="Magazine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Magazine_Provider" Association="Self.FK_Magazine_Provider">
+            <End Role="Provider" EntitySet="Provider" />
+            <End Role="Magazine" EntitySet="Magazine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Post" Association="Self.FK_Staff_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShelingUnitHall_Staff" Association="Self.FK_ShelingUnitHall_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="ShelingUnitHall" EntitySet="ShelingUnitHall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShelingUnitHall_ThemeName" Association="Self.FK_ShelingUnitHall_ThemeName">
+            <End Role="ThemeName" EntitySet="ThemeName" />
+            <End Role="ShelingUnitHall" EntitySet="ShelingUnitHall" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shulf_ShelingUnitHall" Association="Self.FK_shulf_ShelingUnitHall">
+            <End Role="ShelingUnitHall" EntitySet="ShelingUnitHall" />
+            <End Role="shulf" EntitySet="shulf" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shulf_ShelingWarehouse" Association="Self.FK_shulf_ShelingWarehouse">
+            <End Role="ShelingWarehouse" EntitySet="ShelingWarehouse" />
+            <End Role="shulf" EntitySet="shulf" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BookShopModelContainer" CdmEntityContainer="BookShopEntities">
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="BookShopModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="IdAuthor" ColumnName="IdAuthor" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="Lastame" ColumnName="Lastame" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BookShopModel.Books">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="IdBook" ColumnName="IdBook" />
+                <ScalarProperty Name="NameBook" ColumnName="NameBook" />
+                <ScalarProperty Name="NameAuth" ColumnName="NameAuth" />
+                <ScalarProperty Name="NumberShelf" ColumnName="NumberShelf" />
+                <ScalarProperty Name="YearBook" ColumnName="YearBook" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="QuantityWH" ColumnName="QuantityWH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gener">
+            <EntityTypeMapping TypeName="BookShopModel.Gener">
+              <MappingFragment StoreEntitySet="Gener">
+                <ScalarProperty Name="Gener1" ColumnName="Gener" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Magazine">
+            <EntityTypeMapping TypeName="BookShopModel.Magazine">
+              <MappingFragment StoreEntitySet="Magazine">
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+                <ScalarProperty Name="IdBook" ColumnName="IdBook" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="BookShopModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PostName" ColumnName="PostName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provider">
+            <EntityTypeMapping TypeName="BookShopModel.Provider">
+              <MappingFragment StoreEntitySet="Provider">
+                <ScalarProperty Name="NameCompany" ColumnName="NameCompany" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShelingUnitHall">
+            <EntityTypeMapping TypeName="BookShopModel.ShelingUnitHall">
+              <MappingFragment StoreEntitySet="ShelingUnitHall">
+                <ScalarProperty Name="IdSelvingHall" ColumnName="IdSelvingHall" />
+                <ScalarProperty Name="Thema" ColumnName="Thema" />
+                <ScalarProperty Name="IdConsultant" ColumnName="IdConsultant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShelingWarehouse">
+            <EntityTypeMapping TypeName="BookShopModel.ShelingWarehouse">
+              <MappingFragment StoreEntitySet="ShelingWarehouse">
+                <ScalarProperty Name="IdShelingWH" ColumnName="IdShelingWH" />
+                <ScalarProperty Name="IdWHWorker" ColumnName="IdWHWorker" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shulf">
+            <EntityTypeMapping TypeName="BookShopModel.shulf">
+              <MappingFragment StoreEntitySet="shulf">
+                <ScalarProperty Name="IdShelf" ColumnName="IdShelf" />
+                <ScalarProperty Name="IdShelvingUH" ColumnName="IdShelvingUH" />
+                <ScalarProperty Name="IdShelvingWH" ColumnName="IdShelvingWH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="BookShopModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="IdStaff" ColumnName="IdStaff" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="BookShopModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThemeName">
+            <EntityTypeMapping TypeName="BookShopModel.ThemeName">
+              <MappingFragment StoreEntitySet="ThemeName">
+                <ScalarProperty Name="NameTheme" ColumnName="NameTheme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

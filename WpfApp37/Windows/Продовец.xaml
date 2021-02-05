@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfApp37.Windows.Продовец"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp37.Windows"
+        mc:Ignorable="d"
+        Title="Продовец" Height="450" Width="800" Closed="Window_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="DGBook" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Width="0.2*" Header="Название" Binding="{Binding NameBook }"/>
+                <DataGridTextColumn  Width="0.2*" Header="Автор" Binding="{Binding Author.Lastame}"/>
+                <DataGridTextColumn  Width="0.2*" Header="Цена" Binding="{Binding Price}"/>
+                <DataGridTextColumn  Width="0.2*" Header="Статус" Binding="{Binding Status.}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtSell" Content="Продать" HorizontalAlignment="Left" Margin="602,354,0,0" VerticalAlignment="Top" Width="151" Height="42" Click="BtSell_Click"/>
+
+    </Grid>
+</Window>

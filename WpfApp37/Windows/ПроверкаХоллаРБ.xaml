@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfApp37.Windows.ПроверкаХоллаРБ"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp37.Windows"
+        mc:Ignorable="d"
+        Title="ПроверкаХоллаРБ" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="DGBooks" Margin="0,0,0,43" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Width="0.2*" Header="Названи" Binding="{Binding NameBook}"/>
+                <DataGridTextColumn  Width="0.2*" Header="Автор" Binding="{Binding Author.Lastame}"/>
+                <DataGridTextColumn  Width="0.2*" Header="Колличество" Binding="{Binding QuantityWH}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BTMove" Content="Перемести книгу в холл" Margin="579,389,71,10" Click="BTMove_Click"/>
+
+    </Grid>
+</Window>

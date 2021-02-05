@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfApp37.Windows.Менеджер"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp37.Windows"
+        mc:Ignorable="d"
+        Title="Менеджер" Height="450" Width="800" Closed="Window_Closed">
+    <Grid>
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Нужно заказать">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="DGEnd" AutoGenerateColumns="False" PreviewMouseDoubleClick="DGEnd_PreviewMouseDoubleClick">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Width="0.2*" Header="Название" Binding="{Binding NameBook}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Автор" Binding="{Binding Author.Lastame}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Журнал заказов">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="DGMagazine" AutoGenerateColumns="False" IsReadOnly="True" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Width="0.2*" Header="Номер заказа" Binding="{Binding IdOrder}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Название" Binding="{Binding Books.NameBook}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Колличество книг" Binding="{Binding Quantity}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Поставщик" Binding="{Binding Provider}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="BTCom" Content="Принять" HorizontalAlignment="Right" Margin="0,0,41,27" VerticalAlignment="Bottom" Width="117" Height="39" Click="BTCom_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Редактировать">
+                <Grid>
+                    <DataGrid x:Name="DGBook" Margin="0,0,0,-2" AutoGenerateColumns="False" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Width="0.2*" Header="Название книги" Binding="{Binding NameBook}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Автор" Binding="{Binding Author.Lastame}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Номер шкафа" Binding="{Binding NumberShelf}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Год выпуска" Binding="{Binding YearBook}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Статус" Binding="{Binding Status}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Жанр" Binding="{Binding Genre}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Цена" Binding="{Binding Price}"/>
+                            <DataGridTextColumn  Width="0.2*" Header="Колличество" Binding="{Binding QuantityWH}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="BTAddBooks" Content="Добавить книгу" Margin="0,0,61,69" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="130" Click="BTAddBooks_Click"/>
+                    <Button Content="Удалить книгу" HorizontalAlignment="Right" Margin="0,0,61,48" VerticalAlignment="Bottom" Width="130" Click="Button_Click"/>
+                    <Button Content="Редактировать книгу" HorizontalAlignment="Right" Margin="0,0,61,28" Width="130" Click="Button_Click_1" Height="20" VerticalAlignment="Bottom"/>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

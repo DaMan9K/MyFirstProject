@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b416f8afc7614f0c94d9c37096bdc030" Name="Diagram1">
+        <EntityTypeShape EntityType="BookShopModel.Author" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.Books" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.Magazine" Width="1.5" PointX="12" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.Post" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.Provider" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.ShelingUnitHall" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.ShelingWarehouse" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.shulf" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.Staff" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookShopModel.Status" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="BookShopModel.FK_Books_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_Books_shulf" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_Books_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_Magazine_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_Magazine_Provider" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_Staff_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_ShelingUnitHall_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_shulf_ShelingUnitHall" ManuallyRouted="false" />
+        <AssociationConnector Association="BookShopModel.FK_shulf_ShelingWarehouse" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BookShopModel.Gener" Width="1.5" PointX="7.25" PointY="4.5" />
+        <AssociationConnector Association="BookShopModel.FK_Books_Gener" />
+        <EntityTypeShape EntityType="BookShopModel.ThemeName" Width="1.5" PointX="0.75" PointY="8.125" />
+        <AssociationConnector Association="BookShopModel.FK_ShelingUnitHall_ThemeName" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
